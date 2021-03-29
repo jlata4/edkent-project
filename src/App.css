@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+/* Left navigation */
+button.Mui-selected {
+  background-color: blue;
+}
+
+span.MuiTab-wrapper {
+  display: inline !important;
+}
+
+svg.MuiSvgIcon-root {
+  margin-right: 10px;
+}
+/* Display Calendar */
+
+.col-4 {
+  max-width: 300px !important;
+}
