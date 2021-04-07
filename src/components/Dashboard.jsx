@@ -1,17 +1,13 @@
-import React ,{ useState} from "react";
+import React from "react";
 import {Grid, Button, makeStyles, Paper} from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import DataUsageIcon from '@material-ui/icons/DataUsage';
 import SecurityIcon from '@material-ui/icons/Security';
 import FindInPageIcon from '@material-ui/icons/FindInPage';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import DisplayCalendar from "./DisplayCalendar";
 import DisplayChart from "./DisplayChart";
-
+import AttributeCard from "./AttributeCard";
+import Copyright from "./Copyright";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     upgrade: {
         marginTop: "20px",
         float: "right",
+        borderRadius: "25px"
     },
     dataField: {
         display: "inline-table"
@@ -39,24 +36,33 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         margin: theme.spacing(1),
+    },
+    mainLabel : {
+        fontWeight: "bold",
+        color: "black"
+    },
+    labelGrid: {
+        fontSize: "12px"
+    },
+    attrLabel: {
+        fontWeight: "bold",
+        marginRight: "5px",
+        color: "black",       
     }
-  }));
+}));
 
- 
-
-
-  const DisplayGraphArea = (props) => {
+const DisplayGraphArea = (props) => {
     const {first, second, third, fourth} = props;
     const classes = useStyles();
     return(
         <div>
             <Grid container spacing={6}>
-                <Grid item xs={6}>Analytics </Grid>
+                <Grid className={classes.mainLabel} item xs={6}>Analytics</Grid>
                 <Grid item xs={6}><DisplayCalendar/></Grid>           
-                <Grid item xs={3}><span style= {{fontWeight:'bold'}}>{first}</span>Attribute1</Grid>
-                <Grid item xs={3}><span style= {{fontWeight:'bold'}}>{second}</span>Attribute2</Grid>
-                <Grid item xs={3}><span style= {{fontWeight:'bold'}}>{third}</span>Attribute3</Grid>
-                <Grid item xs={3}><span style= {{fontWeight:'bold'}}>{fourth}</span>Attribute4</Grid>
+                <Grid className={classes.labelGrid} item xs={3}><span className={classes.attrLabel}>{first}</span>Attribute1</Grid>
+                <Grid className={classes.labelGrid} item xs={3}><span className={classes.attrLabel}>{second}</span>Attribute2</Grid>
+                <Grid className={classes.labelGrid} item xs={3}><span className={classes.attrLabel}>{third}</span>Attribute3</Grid>
+                <Grid className={classes.labelGrid} item xs={3}><span className={classes.attrLabel}>{fourth}</span>Attribute4</Grid>
                 <Grid container><DisplayChart/></Grid>
             </Grid>
          </div>          
@@ -69,81 +75,49 @@ function Dashboard(){
     const secondValue = 120;
     const thirdValue = 125;
     const fourthValue = 0;
+    const firstName = "ATTRIBUTE 1";
+    const secondName = "ATTRIBUTE 2";
+    const thirdName = "ATTRIBUTE 3";
+    const fourthName = "ATTRIBUTE 4";
+    const firstIcon = <DataUsageIcon/>;
+    const secondIcon = <SecurityIcon/>;
+    const thirdIcon = <AssignmentTurnedInIcon/>;
+    const fourthIcon = <FindInPageIcon/>;
     return (
         <div className={classes.root}>
             <Grid container spacing={7}>
                 <Grid item xs={12}>
-                    <Button className={classes.upgrade}>Upgrade</Button>
+                    <Button variant="contained" color="primary" className={classes.upgrade}>Upgrade</Button>
                 </Grid>
-                <Grid item xs={3}>         
-                    <Card className={classes.user}>
-                        <CardActionArea>
-                                <CardContent>
-                                    <Typography component="div" className={classes.dataField} gutterBottom>
-                                        <DataUsageIcon/>
-                                    </Typography>
-                                    <Typography component="div" className={classes.dataField} variant="body2" color="textSecondary">
-                                        <span name="first" className={classes.name}>{firstValue}</span><br/>
-                                        <span id="1">ATTRIBUTE 1</span>
-                                    </Typography>                           
-                                </CardContent>                   
-                        </CardActionArea>
-                    </Card>
-                </Grid>
-                <Grid item xs={3}>         
-                    <Card className={classes.user}>
-                        <CardActionArea>
-                                <CardContent>
-                                    <Typography component="div" className={classes.dataField} gutterBottom>
-                                        <SecurityIcon/>
-                                    </Typography>
-                                    <Typography component="div" className={classes.dataField} variant="body2" color="textSecondary">
-                                        <span name="second" className={classes.name}>{secondValue}</span><br/>
-                                        <span id="2">ATTRIBUTE 2</span>
-                                    </Typography>                           
-                                </CardContent>                   
-                        </CardActionArea>
-                    </Card>
-                </Grid>
-                <Grid item xs={3}>         
-                    <Card className={classes.user}>
-                        <CardActionArea>
-                                <CardContent>
-                                    <Typography component="div" className={classes.dataField} gutterBottom>
-                                        <DataUsageIcon/>
-                                    </Typography>
-                                    <Typography component="div" className={classes.dataField} variant="body2" color="textSecondary">
-                                        <span name="third" className={classes.name}>{thirdValue}</span><br/>
-                                        <span id="3">ATTRIBUTE 3</span>
-                                    </Typography>                           
-                                </CardContent>                   
-                        </CardActionArea>
-                    </Card>
-                </Grid>
-                <Grid item xs={3}>         
-                    <Card className={classes.user}>
-                        <CardActionArea>
-                                <CardContent>
-                                    <Typography component="div" className={classes.dataField} gutterBottom>
-                                        <FindInPageIcon/>
-                                    </Typography>
-                                    <Typography component="div" className={classes.dataField} variant="body2" color="textSecondary">
-                                        <span name="fourth" className={classes.name}>{fourthValue}</span><br/>
-                                        <span id="4">ATTRIBUTE 4</span>
-                                    </Typography>                           
-                                </CardContent>                   
-                        </CardActionArea>
-                    </Card>
+                <AttributeCard
+                    icon={firstIcon}
+                    value={firstValue}
+                    name={firstName}
+                />
+                <AttributeCard
+                    icon={secondIcon}
+                    value={secondValue}
+                    name={secondName}
+                />
+                <AttributeCard
+                    icon={thirdIcon}
+                    value={thirdValue}
+                    name={thirdName}
+                />
+                <AttributeCard
+                    icon={fourthIcon}
+                    value={fourthValue}
+                    name={fourthName}
+                />               
+                <Grid item xs={12}>
+                    <Paper className={classes.paper}><DisplayGraphArea first={firstValue} second={secondValue} third={thirdValue} fourth={fourthValue}/></Paper>
                 </Grid>
                 <Grid item xs={12}>
-                <Paper className={classes.paper}><DisplayGraphArea first={firstValue} second={secondValue} third={thirdValue} fourth={fourthValue}/></Paper>
-                </Grid>
-            </Grid>
-               
-            
+                    <Copyright/>
+                </Grid>           
+            </Grid>           
         </div>
     );
-
 }
 
 export default Dashboard;

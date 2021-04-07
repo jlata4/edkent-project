@@ -15,10 +15,12 @@ const useStyles = makeStyles({
     logo: {
         float : "left",
         height: "100%",
-        width: "190px"
+        width: "170px"
     },
     logoText : {
-        margin: "28px 10px"
+        margin: "28px 10px",
+        color: "blue",
+        fontWeight: "bold"
     },
     user: {
         float: "right",
@@ -30,7 +32,7 @@ const useStyles = makeStyles({
     name: {
         fontWeight: "bold"
     },
-  });
+});
 
 function TopNavBar(){
     const classes = useStyles();
@@ -57,7 +59,6 @@ function TopNavBar(){
                         </CardContent>                   
                 </CardActionArea>
             </Card>
-
         </Paper>
     
     );

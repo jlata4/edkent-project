@@ -39,11 +39,13 @@
 
 /* Left navigation */
 button.Mui-selected {
-  background-color: blue;
+  background-color: rgb(67, 131, 235);
 }
 
 span.MuiTab-wrapper {
   display: inline !important;
+  color: black;
+  text-transform: capitalize;
 }
 
 svg.MuiSvgIcon-root {

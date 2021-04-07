@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import AdbRoundedIcon from '@material-ui/icons/AdbRounded';
 import PhoneIcon from '@material-ui/icons/Phone';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import CloudDoneIcon from '@material-ui/icons/CloudDone';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
@@ -18,7 +17,6 @@ import Dashboard from "./Dashboard";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-    console.log("children", children);
   return (
     <div
       role="tabpanel"
@@ -31,10 +29,7 @@ function TabPanel(props) {
         <Box div={3}>
           {children}
         </Box>
-      )}
-      
-        
-     
+      )}   
     </div>
   );
 }
@@ -61,9 +56,6 @@ const useStyles = makeStyles((theme) => ({
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
     overflow: "visible",
-  },
-  tabList: {
-      backgroundImage: `<PhoneIcon />`,
   }
 }));
 
@@ -89,7 +81,7 @@ function LeftNavBar() {
       
         <Tab className={classes.tabList} icon={<PhoneIcon />} label="Menu Option 1 +" {...a11yProps(0)}/>
         <Tab className={classes.tabList} icon={<AdbRoundedIcon />} label="Menu Option 2 +" {...a11yProps(1)}/>
-        <Tab className={classes.tabList} icon={<FavoriteIcon />} label="Menu Option 3 +" {...a11yProps(2)}/>
+        <Tab className={classes.tabList} icon={<CloudDoneIcon />} label="Menu Option 3 +" {...a11yProps(2)}/>
         <Tab className={classes.tabList} icon={<AddRoundedIcon />} label="Menu Option 4 +" {...a11yProps(3)}/>
         <Tab className={classes.tabList} icon={<AddAPhotoIcon />} label="Menu Option 5 ->" {...a11yProps(4)} />
         <Tab className={classes.tabList} icon={<ArchiveIcon />} label="Menu Option 6" {...a11yProps(5)} />
